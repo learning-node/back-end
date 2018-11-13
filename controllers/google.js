@@ -21,9 +21,8 @@ function rawSearch(term) {
 function search(req, res, next) {
     rawSearch(req.params.term)
         .then( body => {
-            console.log('THEN', body)
             res.status(200);
-            res.render({ html: body });
+            res.send(body);
         })
         .catch( err => {
             res.status(400).send(err);
